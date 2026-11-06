@@ -1,0 +1,12 @@
+node_modules/
+.next/
+out/
+.wrangler/
+.dev.vars
+.dev.vars.*
+.env*
+*.tsbuildinfo
+coverage/
+*.log
+secrets.json
+*.sql.backup

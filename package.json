@@ -1,0 +1,43 @@
+{
+  "name": "yadban",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A bilingual personal reminder planner with scheduled Web Push.",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "dev": "npm run build && wrangler dev --test-scheduled",
+    "build": "next build --webpack",
+    "preview": "wrangler dev --test-scheduled",
+    "typecheck": "next typegen && tsc --noEmit",
+    "test": "node --import tsx --test tests/*.test.ts",
+    "setup": "node scripts/setup.mjs",
+    "db:local": "wrangler d1 migrations apply DB --local",
+    "db:remote": "wrangler d1 migrations apply DB --remote",
+    "deploy": "npm run build && wrangler deploy",
+    "secrets:upload": "node scripts/upload-secrets.mjs",
+    "check": "npm run typecheck && npm test && npm run build",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "dependencies": {
+    "next": "16.4.5",
+    "react": "19.2.6",
+    "react-dom": "19.2.6",
+    "lucide-react": "1.31.0",
+    "zod": "3.25.76",
+    "@block65/webcrypto-web-push": "2.0.0"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3",
+    "@types/node": "22.19.19",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "@cloudflare/workers-types": "4.20260515.1",
+    "wrangler": "4.92.0",
+    "tsx": "4.20.6",
+    "prettier": "3.6.2"
+  }
+}
